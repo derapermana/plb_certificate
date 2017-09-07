@@ -41,9 +41,19 @@ return [
             'provider' => 'users',
         ],
 
+        'guru' => [
+            'driver' => 'session',
+            'provider' => 'gurus',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
+        ],
+
+        'guru-api' => [
+            'driver' => 'token',
+            'provider' => 'gurus',
         ],
     ],
 
@@ -70,6 +80,10 @@ return [
             'model' => App\User::class,
         ],
 
+        'gurus' => [
+            'driver' => 'eloquent',
+            'model' => App\Guru::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -96,6 +110,12 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+
+        'gurus' => [
+            'provider' => 'gurus',
+            'table' => 'password_resets',
+            'expire' => 30,
         ],
     ],
 
