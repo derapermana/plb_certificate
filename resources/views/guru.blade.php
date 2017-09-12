@@ -8,13 +8,9 @@
                 <div class="panel-heading">Dashboard Guru</div>
 
                 <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    @component('components.who')
 
-                    You are logged in as <strong>Guru</strong>!
+                    @endcomponent
                 </div>
             </div>
         </div>

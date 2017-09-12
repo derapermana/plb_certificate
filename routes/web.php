@@ -18,8 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+
 Route::prefix('guru')->group(function(){
   Route::get('/login', 'Auth\GuruLoginController@showLoginForm')->name('guru.login');
   Route::post('/login', 'Auth\GuruLoginController@login')->name('guru.login.submit');
+  Route::get('/logout', 'Auth\GuruLoginController@logout')->name('guru.logout');
   Route::get('/', 'GuruController@index')->name('guru.dashboard');
 });

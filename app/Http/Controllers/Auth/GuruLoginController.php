@@ -11,7 +11,7 @@ class GuruLoginController extends Controller
 
   public function __construct()
   {
-    $this->middleware('guest:guru');
+    $this->middleware('guest:guru', ['except' => ['logout']]);
   }
   public function showLoginForm()
   {
@@ -37,5 +37,11 @@ class GuruLoginController extends Controller
 
     // If unsuccesssful, redirect to login form with form data
     return redirect()->back()->withInput($request->only('email', 'remember'));
+  }
+
+  public function logout()
+  {
+    Auth::guard('guru')->logout();
+    return redirect('/guru');
   }
 }
