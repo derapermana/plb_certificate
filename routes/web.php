@@ -21,9 +21,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
-Route::prefix('guru')->group(function(){
+Route::prefix('guru')->group(function() {
   Route::get('/login', 'Auth\GuruLoginController@showLoginForm')->name('guru.login');
   Route::post('/login', 'Auth\GuruLoginController@login')->name('guru.login.submit');
   Route::get('/logout', 'Auth\GuruLoginController@logout')->name('guru.logout');
   Route::get('/', 'GuruController@index')->name('guru.dashboard');
+
+  //password reset routes
+  Route::post('/password/email', 'Auth\GuruForgotPasswordController@sendResetLinkEmail')->name('guru.password.email');
+  Route::get('/password/reset', 'Auth\GuruForgotPasswordController@showLinkRequestForm')->name('guru.password.request');
+  Route::post('/password/reset', 'Auth\GuruResetPasswordController@reset');
+  Route::post('/password/reset/{token}', 'Auth\GuruResetPasswordController@showResetForm')->name('guru.password.reset');
 });
