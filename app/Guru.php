@@ -37,5 +37,10 @@ class Guru extends Authenticatable
         $this->notify(new GuruResetPasswordNotification($token));
     }
 
+    public function guru_pelatihans()
+    {
+        return $this->hasMany('App\GuruPelatihan');
+    }
+
 
 }
