@@ -1,9 +1,9 @@
 @if (Auth::guard('web')->check())
     <p class="text-success">
         You are logged in as a <strong>USER</strong>
-        @if(Auth::user()->hasAccess('pelatihan.c'))
-            Ada
-        @endif
+        @can('admin')
+            <h1>Test</h1>
+        @endcan
     </p>
 @else
     <p class="text-danger">
